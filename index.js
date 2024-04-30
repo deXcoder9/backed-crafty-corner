@@ -33,11 +33,6 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result)
     })
-    app.get('/artandcraftcategories', async(req, res) =>{
-      const cursor = ArtAndCartCategories.find()
-      const result = await cursor.toArray();
-      res.send(result)
-    })
 
     app.get('/artncraft/:id', async(req, res) =>{
       const id = req.params.id;
@@ -45,6 +40,15 @@ async function run() {
       const result = await ARcollection.findOne(query)
       res.send(result)
     })
+
+
+    app.get('/artandcraftcategories', async(req, res) =>{
+      const cursor = ArtAndCartCategories.find()
+      const result = await cursor.toArray();
+      res.send(result)
+    })
+
+ 
 
     app.get('/artncraft/:id', async(req, res) =>{
       const id = req.params.id;
