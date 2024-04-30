@@ -26,8 +26,7 @@ async function run() {
     // await client.connect();
     const ARcollection = client.db("ArtnCartDB").collection("ArtnCart")
     const ArtAndCartCategories = client.db("ArtnCartDB").collection("artAndCraftCategories")
-    // console.log(ArtAndCartCategories)
-    // console.log(ARcollection)
+
 
     app.get('/artncraft', async(req, res) =>{
       const cursor = ARcollection.find()
@@ -99,11 +98,3 @@ run().catch(console.dir);
 
 
 
-
-app.get('/', (req, res) => {
-    res.send('hello world')
-})
-
-app.listen(port, ()=>{
-    console.log(`the port is running in ${port}`)
-})
