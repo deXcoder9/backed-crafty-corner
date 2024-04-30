@@ -76,7 +76,12 @@ async function run() {
     })
 
 
-  
+    app.post('/artncraft', async(req, res) =>{
+      const newAR = req.body
+      console.log(newAR)
+      const result = await ARcollection.insertOne(newAR)
+      res.send(result)
+    })
 
     app.delete('/artncraft/:id', async(req, res) =>{
       const id = req.params.id;
