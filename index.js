@@ -52,7 +52,28 @@ async function run() {
       const result = await ARcollection.findOne(query)
       res.send(result)
     })
-   
+    app.put('/artncraft/:id', async(req, res) =>{
+      const id = req.params.id;
+      const filter = {_id : new ObjectId(id)}
+      const options = {upsert : true};
+      const updatedArtsAndCrafts = req.body
+      const ArtsAndCrafts = {
+        $set: {
+
+          item_name : updatedArtsAndCrafts.item_name,
+          subcategory : updatedArtsAndCrafts.subcategory,
+          description : updatedArtsAndCrafts.description,
+          price : updatedArtsAndCrafts.price,
+          rating : updatedArtsAndCrafts.rating,
+          photo : updatedArtsAndCrafts.photo,
+          processingTime : updatedArtsAndCrafts.processingTime,
+          customization : updatedArtsAndCrafts.customization,
+          inStock : updatedArtsAndCrafts.inStock
+        }
+      }
+        const result = await ARcollection.updateOne(filter, ArtsAndCrafts, options)
+        res.send(result);
+    })
 
 
     app.post('/artncraft', async(req, res) =>{
